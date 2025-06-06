@@ -1,0 +1,319 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 271 91% 65%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 271 91% 65%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 246 45% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 246 45% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 246 45% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 246 45% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 246 45% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 246 45% 15%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 246 45% 15%;
+    --input: 246 45% 15%;
+    --ring: 271 91% 65%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 271 91% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-color: #0B0B19; /* Set a darker background color as fallback */
+  }
+}
+
+@layer components {
+  .star {
+    @apply absolute rounded-full bg-white opacity-70;
+  }
+  
+  .galaxy-bg {
+    @apply overflow-hidden bg-space-dark relative;
+    background-image: radial-gradient(circle at center, rgba(155, 135, 245, 0.1) 0%, rgba(11, 11, 25, 1) 100%);
+  }
+  
+  .glassmorphism {
+    @apply backdrop-blur-md border shadow-lg;
+    background: rgba(26, 23, 46, 0.6);
+    border-color: rgba(155, 135, 245, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.1),
+                0 0 20px rgba(155, 135, 245, 0.15);
+  }
+  
+  .cosmic-card {
+    @apply rounded-lg overflow-hidden relative;
+    background: linear-gradient(135deg, rgba(155, 135, 245, 0.15), rgba(11, 11, 25, 0.9));
+    border: 1px solid rgba(155, 135, 245, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cosmos-button {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, #9b87f5 0%, #d946ef 100%);
+    transition: all 0.3s ease;
+  }
+  
+  .cosmos-button:hover {
+    box-shadow: 0 0 15px rgba(155, 135, 245, 0.5), 
+                0 0 30px rgba(217, 70, 239, 0.3);
+  }
+  
+  .cosmic-glow {
+    @apply relative;
+  }
+  
+  .cosmic-glow::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    background: radial-gradient(circle, 
+                rgba(155, 135, 245, 0.3) 0%, 
+                rgba(155, 135, 245, 0) 70%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .cosmic-glow:hover::after {
+    opacity: 1;
+  }
+  
+  .nebula-text {
+    @apply font-bold;
+    background: linear-gradient(to right, #9b87f5, #d946ef, #9b87f5);
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: nebula-shift 4s linear infinite;
+  }
+  
+  /* Space dust particles */
+  .space-dust {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px 1px rgba(155, 135, 245, 0.5);
+    border-radius: 50%;
+  }
+  
+  /* Constellation connector lines */
+  .constellation-line {
+    position: absolute;
+    height: 1px;
+    transform-origin: left center;
+    background: linear-gradient(90deg, rgba(155, 135, 245, 0.5), transparent);
+  }
+  
+  @keyframes nebula-shift {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+  
+  .starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes space-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(155, 135, 245, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(217, 70, 239, 0.8); }
+}
+
+@keyframes cosmic-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(500px) translateY(300px);
+    opacity: 0;
+  }
+}
+
+@keyframes galaxy-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-twinkle-delay {
+  animation: twinkle 3s ease-in-out 1s infinite;
+}
+
+.animate-twinkle-delay-2 {
+  animation: twinkle 3s ease-in-out 2s infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-space-glow {
+  animation: space-glow 3s ease-in-out infinite;
+}
+
+.animate-cosmic-pulse {
+  animation: cosmic-pulse 4s ease-in-out infinite;
+}
+
+.animate-shooting-star {
+  animation: shooting-star 3s ease-in-out forwards;
+}
+
+.animate-galaxy-rotate {
+  animation: galaxy-rotate 120s linear infinite;
+}
+
+#root {
+  @apply h-screen w-full;
+}
+
+/* Add more stars in the background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Add a subtle nebula effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.4;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(155, 135, 245, 0.15) 0%, transparent 20%),
+    radial-gradient(circle at 70% 60%, rgba(217, 70, 239, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(110, 89, 165, 0.1) 0%, transparent 20%);
+}

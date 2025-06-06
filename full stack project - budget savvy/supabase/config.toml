@@ -1,0 +1,9 @@
+
+# Project ID for the Supabase project
+project_id = "bxkfbigjzzrghinholwm"
+
+[functions.ai-financial-chat]
+verify_jwt = true
+
+[functions.chat-history]
+verify_jwt = true
